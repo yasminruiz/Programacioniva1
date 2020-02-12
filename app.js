@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded",event =>{
     document.querySelector("#btnRecuperarAlumnos").addEventListener("click",(e)=>{
         if('localStorage' in window){
             document.querySelector("#txtCodigoAlumno").value = window.localStorage.getItem("codigo");
-            document.querySelector("#txtNobreAlumno").value = window.localStorage.getItem("nombre");
+            document.querySelector("#txtNombreAlumno").value = window.localStorage.getItem("nombre");
             document.querySelector("#txtDireccionAlumno").value = window.localStorage.getItem("direccion");
             document.querySelector("#txtTelefonoAlumno").value = window.localStorage.getItem("telefono");
         }else{
