@@ -1,7 +1,8 @@
-document.addEventListener("DOMContentLoaded", e=>){
-  const form = document.querySelector(#frmConversores);
+document.addEventListener("DOMContentLoaded", e=>{
+  const form = document.querySelector("#frmConversores");
   form.addEventListener("submit", event=>{
       event.preventDefault();
+
       let de = document.querySelector("#cboDe").value,
       a = document.querySelector("cboA").value,
       cantidad = document.querySelector("txtCantidadConversor").value;
@@ -16,4 +17,4 @@ document.addEventListener("DOMContentLoaded", e=>){
   });
   let $res = document.querySelector("#lblRespuesta");
   $res.innerHTML = `respuesta: ${ (monedas[a]/monedas[de]* cantidad).toFixed(2)}`;
-};
+});
