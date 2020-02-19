@@ -4,10 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title>Bienvenido a Programacion IV</title>
 </head>
 <body>
-    
+    <form id="frmConversores" method="post">
+
+        <div class="container">
+            <div class="row row-cols-2">
+                <div class="col text-center br-info text-while">
+                    APP CONVERSORES
+                </div>
+            </div>
+            <div class="row row-cols-4">
+                <div class="col">
+                    DE:
+                    <select id="cboDE" class="from-control">
+                        <option values="dolar">Dolar</option>
+                        <option values="euro">Euro</option>
+                        <option values="quetzal">Quetzal</option>
+                        <option values="lempira">Lempira</option>
+                        <option values="cordoba">Cordoba</option>
+                    </select>
+                </div>
+                <div class="col">
+                    A:
+                    <select id="cboDE" class="from-control">
+                        <option values="dolar">Dolar</option>
+                        <option values="euro">Euro</option>
+                        <option values="quetzal">Quetzal</option>
+                        <option values="lempira">Lempira</option>
+                        <option values="cordoba">Cordoba</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row row-cols-4 p-2">
+                <div class="col text-center">
+                    <input type="text" required="required" patter="[0-9.]{1,}" placeholder="Cantidad" id="txtCantidadConversor" class="form-control">
+                </div>
+                <div class="col text-center">
+                    <p class="bg-success text-white" id="lblRespuesta">Respuesta: ?</p>
+                </div>
+            </div>
+            <div class="row row-cols-2">
+                <div class="col text-center">
+                    <input type="text" submit="" id="btnConvertir" class="btn btn-primary">
+                </div>
+            </div>
+        </div>
+
+    </form>
 </body>
 </html>
