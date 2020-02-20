@@ -5,7 +5,8 @@ document.addEventListener("DOMContentLoaded", e=>{
 
       let de = document.querySelector("#cboDe").value,
           a = document.querySelector("#cboA").value,
-          cantidad = document.querySelector("#txtCantidadConversor").value;
+          cantidad = document.querySelector("#txtCantidadConversor").value,
+          opcion = document.getElementById('cboConvertir');
 
       let monedas = {
           "dolar":1,
@@ -24,16 +25,24 @@ document.addEventListener("DOMContentLoaded", e=>{
               "byte": 1,
               "kb": 0.001,
               "mb": 0.000001,
-              "gb":0.00000000093132},
+              "gb":0.000000001},
               peso = {
-                "g": 1000,
+                "gramo": 1000,
                 "kg": 1,
                 "libra": 2.20462,
                 "onza": 35.274,
                 "tonelada": 0.01};
 
       let $res = document.querySelector("#lblRespuesta");
-      $res.innerHTML = `Respuesta: ${ (monedas[a]/monedas[de]*cantidad).toFixed(2) }`;
+      if(opcion.value == "moneda"){
+        $res.innerHTML = `Respuesta: ${ (monedas[a]/monedas[de]*cantidad).toFixed(2) }`;
+      } else if(opcion.value == "longitud"){
+        $res.innerHTML = `Respuesta: ${ (longitudes[a]/longitudes[de]*cantidad).toFixed(2) }`;
+      } else if(opcion.value == "almacenamiento"){
+        $res.innerHTML = `Respuesta: ${ (almacenamiento[a]/almacenamiento[de]*cantidad) }`;
+      } else if(opcion.value == "peso"){
+        $res.innerHTML = `Respuesta: ${ (peso[a]/peso[de]*cantidad).toFixed(2) }`;
+      };
   });
 });
 
