@@ -9,6 +9,7 @@ export function modulo(){
         $("#frm-docentes").dataset.iddocente = docente.idDocente;
         $("#txtCodigoDocente").value = docente.codigo;
         $("#txtNombreDocente").value = docente.nombre;
+        $("#txtNitDocente").value = docente.nit;
         $("#txtDireccionDocente").value = docente.direccion;
         $("#txtTelefonoDocente").value = docente.telefono;
     };
@@ -25,6 +26,7 @@ export function modulo(){
                     <tr data-iddocente='${docente.idDocente}' data-docente='${JSON.stringify(docente)}'>
                         <td>${docente.codigo}</td>
                         <td>${docente.nombre}</td>
+                        <td>${docente.nit}</td>
                         <td>${docente.direccion}</td>
                         <td>${docente.telefono}</td>
                         <td>

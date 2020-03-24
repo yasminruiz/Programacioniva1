@@ -10,6 +10,7 @@ export function modulo(){
           idDocente : frmDocentes.dataset.iddocente,
           codigo    : $("#txtCodigoDocente").value,
           nombre    : $("#txtNombreDocente").value,
+          nit       : $("#txtNitDocente").value,
           direccion : $("#txtDireccionDocente").value,
           telefono  : $("#txtTelefonoDocente").value
       };
