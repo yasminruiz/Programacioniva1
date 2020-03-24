@@ -44,8 +44,34 @@ class docente{
                     )
                 ');
                 $this->respuesta['msg'] = 'Registro insertado correctamente';
+            } else if( $this->datos['accion']==='modificar' ){
+                $this->db->consultas('
+                   UPDATE docentes SET
+                        codigo     = "'. $this->datos['codigo'] .'",
+                        nombre     = "'. $this->datos['nombre'] .'",
+                        direccion  = "'. $this->datos['direccion'] .'",
+                        telefono   = "'. $this->datos['telefono'] .'"
+                    WHERE idDocente = "'. $this->datos['idDocente'] .'"
+                ');
+                $this->respuesta['msg'] = 'Registro actualizado correctamente';
             }
         }
+    }
+    public function buscarDocente($valor=''){
+        $this->db->consultas('
+            select docentes.idDocente, docentes.codigo, docentes.nombre, docentes.direccion, docentes.telefono
+            from docentes
+            where docentes.codigo like "%'.$valor.'%" or docentes.nombre like "%'.$valor.'%"
+        ');
+        return $this->respuesta = $this->db->obtener_datos();
+    }
+    public function eliminarDocente($idDocente=''){
+        $this->db->consultas('
+            delete docentes
+            from docentes
+            where docentes.idDocente = "'.$idDocente.'"
+        ');
+        $this->respuesta['msg'] = 'Registro eliminado correctamente';
     }
 }
 ?>

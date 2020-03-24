@@ -1,11 +1,13 @@
-var $ = el => document.querySelector(el),
-    frmDocentes = $("#frmDocentes");
+export function modulo(){
+    var $ = el => document.querySelector(el),
+    frmDocentes = $("#frm-docentes");
     frmDocentes.addEventListener("submit",e=>{
     e.preventDefault();
     e.stopPropagation();
 
     let docentes = {
-        accion    : 'nuevo',
+        accion    : frmDocentes.dataset.accion,
+        idDocente : frmDocentes.dataset.iddocente,
         codigo    : $("#txtCodigoDocente").value,
         nombre    : $("#txtNombreDocente").value,
         direccion : $("#txtDireccionDocente").value,
@@ -18,4 +20,9 @@ var $ = el => document.querySelector(el),
             </div>
         `;
     });
-}); 
+});
+frmDocentes.addEventListener("reset",e=>{
+    $("#frm-docentes").dataset.accion = 'nuevo';
+    $("#frm-docentes").dataset.iddocente = '';
+});
+} 
