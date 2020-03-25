@@ -14,9 +14,12 @@ export function modulo(){
         $("#txtTelefonoDocente").value = docente.telefono;
     };
     let eliminarDocente = (idDocente)=>{
-        fetch(`private/Modulos/docentes/procesos.php?proceso=eliminarDocente&docente=${idDocente}`).then(resp=>resp.json()).then(resp=>{
-            traerDatos('');
-        });
+        if(confirm('¿Seguro que quiere eliminar?')){
+            fetch(`private/Modulos/docentes/procesos.php?proceso=eliminarDocente&docente=${idDocente}`).then(resp=>resp.json()).then(resp=>{
+                traerDatos('');
+            });
+        }
+        
     };
     let traerDatos = (valor)=>{
         fetch(`private/Modulos/docentes/procesos.php?proceso=buscarDocente&docente=${valor}`).then(resp=>resp.json()).then(resp=>{
