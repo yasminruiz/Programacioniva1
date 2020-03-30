@@ -1,18 +1,14 @@
 function init(){
-    $("[class*='mostrar']").off("click").click(function(e){
+    $("[class*='mostrar']").click(function(e){
         let modulo = $(this).data("modulo"),
             form   = $(this).data("form");
-        fetch(`public/vistas/${modulo}/${form}.html`).then( resp=>resp.text() ).then(resp=>{
-            $(`#vista-${form}`).html(resp).draggable();
-            
-            $(`#btn-close-${form}`).click(()=>{;
-                $(`#vista-${form}`).html("");
-            });
-            import(`../vistas/${modulo}/${form}.js`).then(module=>{
-                module.modulo();
-            });
+
+        $(`#vista-${form}`).load(`public/vistas/${modulo}/${form}.html`, function(){
+             $(`#btn-close-${form}`).click(()=>{
+                 $(`#vista-${form}`).html("");
+             });
             init();
-        }); 
+        }).draggable(); 
     });
- }
+}
 init();
