@@ -24,5 +24,5 @@ var appalumno = new Vue({
               appBuscarAlumnos.buscarAlumno();
           });
       }
-  }
+    }
 });
