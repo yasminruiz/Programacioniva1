@@ -14,13 +14,13 @@ export function modulo(){
           direccion : $("#txtDireccionDocente").value,
           telefono  : $("#txtTelefonoDocente").value
       };
-    fetch(`private/Modulos/docentes/procesos.php?proceso=recibirDatos&docente=${JSON.stringify(docentes)}`).then( resp=>resp.json() ).then(resp=>{
-        $("#respuestaDocente").innerHTML = `
-            <div class="alert alert-success" role="alert">
-                ${resp.msg}
-            </div>
-        `;
-    });
+      fetch(`private/Modulos/docentes/procesos.php?proceso=recibirDatos&docente=${JSON.stringify(docentes)}`).then( resp=>resp.json() ).then(resp=>{
+          $("#respuestaDocente").innerHTML = `
+              <div class="alert alert-success" role="alert">
+                  ${resp.msg}
+              </div>
+          `;
+      });
     });
     frmDocentes.addEventListener("reset",e=>{
         $("#frm-docentes").dataset.accion = 'nuevo';
