@@ -6,28 +6,41 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="public/css/estilos.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <title>Educacion Financiera</title>
+    <link rel="shortcut icon" href="/img/logo.png">
+    <title> Educacion Financiera</title>
 </head>
 <body class="bg-secondary">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">
             <img src="/img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
             Educacion Financiera
         </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
        
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#"><span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="#">Inicio</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link mostrar-alumnos" data-modulo="alumnos" data-form="alumnos" href="#">Alumnos</a>
+                    <a class="nav-link mostrar-consultas" data-modulo="consultas" data-form="consultas" href="#">Consultas</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Calculos
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="#">Salario</a>
+                      <a class="dropdown-item" href="#">Cuotas</a>
+                    </div>
                 </li>
             </ul>
         </div>
     </nav>
     <div class="container">
-        <div class="modulos" id="vista-alumnos"></div>
+        <div class="modulos" id="vista-consultas"></div>
         <div class="modulos" id="vista-buscar-alumnos"></div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
