@@ -1,44 +1,35 @@
-<form v-on:submit.prevent="guardarConsulta" data-accion="nuevo" data-idalumno='' id="frm-consultas" method="post">
+<form v-on:submit.prevent="CalcularSalario" data-idalumno='' id="frm-salarios" method="post">
     <div class="card mb-3">
         <div class="card-header">
-            Consulta
+            Calculo del Salario
         
-            <button type="button" id="btn-close-consultas" class="close" aria-label="Close">
+            <button type="button" id="btn-close-salarios" class="close" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
         <div class="card-body">
             <div class="row p-2">
                 <div class="col-4">
-                    Nombre
+                    Cantidad
                 </div>
                 <div class="col-10">
-                    <input type="text" v-model="consulta.nombre" placeholder="Nombre" class="form-control">
-                </div>
-            </div>
-            <div class="row p-2">
-                <div class="col-4">
-                    Consulta
-                </div>
-                <div class="col-12">
-                    <input type="text" v-model="consulta.consulta" placeholder="Escriba su duda o peticion" class="form-control">
+                    <input type="text" v-model="salario.cantidad" placeholder="Cantidad" class="form-control">
                 </div>
             </div>
             <div class="row p-2"> 
                 <div class="col-12 text-center">
-                    <input id="btnGuardarConsultas" type="submit" class="btn btn-primary" value="Enviar">
+                    <input id="btnCalcularSalario" type="submit" class="btn btn-primary" value="Calcular">
                     <input type="reset" class="btn btn-warning" value="Limpiar">
-                    <input type="button" class="btn btn-success" data-modulo="consultas" data-form="ver-productos" value="ver consultas">
                 </div>
             </div>
             <div class="row p-2">
                 <div class="col-12 text-center">
                     <div class="alert alert-success" role="alert"> 
-                        {{ consulta.msg }}
+                        {{ salario.msg }}
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </form>
-<script src="public/vistas/consultas/consultas.js"></script>
+<script src="public/vistas/salarios/salarios.js"></script>
