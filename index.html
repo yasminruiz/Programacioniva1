@@ -6,13 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="public/css/estilos.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="shortcut icon" href="/img/logo.png">
+    <link rel="shortcut icon" href="img/logo.png">
     <title> Educacion Financiera</title>
 </head>
 <body class="bg-secondary">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">
-            <img src="/img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+            <img src="img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
             Educacion Financiera
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,21 +27,24 @@
                 <li class="nav-item">
                     <a class="nav-link mostrar-consultas" data-modulo="consultas" data-form="consultas" href="#">Consultas</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Calculos
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="#">Salario</a>
-                      <a class="dropdown-item" href="#">Cuotas</a>
-                    </div>
+                <li class="nav-item">
+                    <a class="nav-link mostrar-salarios" data-modulo="salarios" data-form="salarios" href="#">Calcular Salario</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link mostrar-cuotas" data-modulo="cuotas" data-form="cuotas" href="#">Calcular Cuotas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link mostrar-login" data-modulo="login" data-form="login" href="#">Iniciar Sesión</a>
                 </li>
             </ul>
         </div>
     </nav>
     <div class="container">
         <div class="modulos" id="vista-consultas"></div>
-        <div class="modulos" id="vista-buscar-alumnos"></div>
+        <div class="modulos" id="vista-ver-consultas"></div>
+        <div class="modulos" id="vista-salarios"></div>
+        <div class="modulos" id="vista-cuotas"></div>
+        <div class="modulos" id="vista-login"></div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="public/js/jquery-ui.min.js"></script>

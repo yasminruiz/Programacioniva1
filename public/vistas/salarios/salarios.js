@@ -17,7 +17,7 @@ var appconsulta = new Vue({
               this.consulta.nombre = '';
               this.consulta.consulta = '';
               this.consulta.accion = 'nuevo';
-              appVerConsultas.verConsultas();
+              appBuscarConsulta.buscarConsulta();
           });
       }
     }
