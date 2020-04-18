@@ -10,11 +10,13 @@ var applogin = new Vue({
   },
   methods:{
     iniciarSesion:function(){
-        if(fetch(`private/Modulos/login/procesos.php?proceso=iniciarSesion&login=${correo,contraseña}`).then(resp=>resp.json()).then(resp=>{}) == 1){
-          
-        } else{
-          alert("error");
-        }
+        fetch(`private/Modulos/login/procesos.php?proceso=validarUsuario&login=${this.correo,this.contraseña}`).then(resp=>resp.json()).then(resp=>{
+          if(!resp){
+
+          }else{
+            alert("Bienvenido/a ");
+          }
+        });
       }
     }
 });

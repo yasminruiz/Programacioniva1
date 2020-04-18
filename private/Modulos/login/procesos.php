@@ -22,17 +22,33 @@ class login{
     }
     private function validar_datos(){
         if( empty($this->datos['correo']) ){
+            $this->respuesta['msg'] = 'por favor ingrese el nombre';
+        }
+        if( empty($this->datos['correo']) ){
             $this->respuesta['msg'] = 'por favor ingrese el correo';
         }
         if( empty($this->datos['contraseña']) ){
             $this->respuesta['msg'] = 'por favor ingrese la contraseña';
         }
-        $this->iniciarSesion();
+        $this->almacenar_registro();
     }
-    public function iniciarSesion($correo='', $contraseña=''){
-        $this->db->consultas('
-            select * from login where correo like "%'.$correo.'%" and contraseña like "%'.$contraseña.'%"');
-        return $this->respuesta;
+    private function almacenar_registro(){
+        if( $this->respuesta['msg']==='correcto' ){
+            if( $this->datos['accion']==='nuevo' ){
+                $this->db->consultas('
+                    INSERT INTO login (nombre,correo,contraseña) VALUES(
+                        "'. $this->datos['nombre'] .'",
+                        "'. $this->datos['correo'] .'",
+                        "'. $this->datos['contraseña'] .'"
+                    )
+                ');
+                $this->respuesta['msg'] = 'Registro insertado correctamente';
+            } 
+        }
+    }
+    public function validarUsuario($correo='', $contraseña=''){
+        $this->db->consultas('select * from login where correo like "%'.$correo.'%" and contraseña like "%'.$contraseña.'%"');
+        return $this->respuesta = $this->db->obtener_datos();
     }
 }
 ?>
