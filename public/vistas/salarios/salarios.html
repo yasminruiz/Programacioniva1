@@ -16,17 +16,25 @@
                     <input type="text" v-model="salario.cantidad" placeholder="Cantidad" class="form-control">
                 </div>
             </div>
+            <div class="row p-2">
+                <div class="col-10">
+                    {{ salario.isss }}
+                </div>
+            </div>
+            <div class="row p-2">
+                <div class="col-10">
+                    {{ salario.afp }}
+                </div>
+            </div>
+            <div class="row p-2">
+                <div class="col-10">
+                    {{ salario.d2 }}
+                </div>
+            </div>
             <div class="row p-2"> 
                 <div class="col-12 text-center">
                     <input id="btnCalcularSalario" type="submit" class="btn btn-primary" value="Calcular">
                     <input type="reset" class="btn btn-warning" value="Limpiar">
-                </div>
-            </div>
-            <div class="row p-2">
-                <div class="col-12 text-center">
-                    <div class="alert alert-success" role="alert"> 
-                        {{ salario.msg }}
-                    </div>
                 </div>
             </div>
         </div>
