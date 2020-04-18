@@ -5,6 +5,13 @@ var appVerConsultas = new Vue({
         valor:''
     },
     methods:{
-       
+        verConsultas:function(){
+            fetch(`private/Modulos/consultas/procesos.php?proceso=verConsultas&consulta=${this.valor}`).then(resp=>resp.json()).then(resp=>{
+                this.mispeticiones = resp;
+            });
+        },
+    },
+    created:function(){
+        this.verConsultas();
     }
 });

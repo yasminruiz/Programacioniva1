@@ -42,5 +42,11 @@ class consulta{
             } 
         }
     }
+    public function verConsultas($valor=''){
+        $this->db->consultas('
+            select * from consultas where nombre like "%'.$valor.'%" or consulta like "%'.$valor.'%"
+        ');
+        return $this->respuesta = $this->db->obtener_datos();
+    }
 }
 ?>

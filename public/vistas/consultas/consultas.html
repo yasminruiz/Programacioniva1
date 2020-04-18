@@ -1,4 +1,4 @@
-<form v-on:submit.prevent="guardarConsulta" data-accion="nuevo" data-idalumno='' id="frm-consultas" method="post">
+<form v-on:submit.prevent="guardarConsulta" data-accion="nuevo" data-idconsulta='' id="frm-consultas" method="post">
     <div class="card mb-3">
         <div class="card-header">
             Consulta
@@ -28,7 +28,7 @@
                 <div class="col-12 text-center">
                     <input id="btnGuardarConsultas" type="submit" class="btn btn-primary" value="Enviar">
                     <input type="reset" class="btn btn-warning" value="Limpiar">
-                    <input type="button" class="btn btn-success" data-modulo="consultas" data-form="ver-consultas" value="ver consultas">
+                    <input type="button" class="btn btn-success mostrar-ver-consultas" data-modulo="consultas" data-form="ver-consultas" value="ver consultas">
                 </div>
             </div>
             <div class="row p-2">

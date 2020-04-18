@@ -3,12 +3,12 @@ var appsalario = new Vue({
   data:{
       salario:{
           cantidad    : '',
-          msg       : ''
+          msg         : ''
       }
   },
   methods:{
       CalcularSalario:function(){
-        this.salario.msg = "salario.cantidad" ;
+        this.salario.msg = "hola" ;
       }
     }
 });

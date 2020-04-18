@@ -2,13 +2,13 @@ var appcuota = new Vue({
   el:'#frm-cuotas',
   data:{
       cuota:{
-          cantidad : '',
+          cantidad  : '',
           msg       : ''
       }
   },
   methods:{
-    Calcular:function(){
-        this.cuota.msg = cuota.cantidad ;
+      calcularCuota:function(){
+        this.cuota.msg = "hola" ;
       }
     }
 });
