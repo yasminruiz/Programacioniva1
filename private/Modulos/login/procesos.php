@@ -21,7 +21,7 @@ class login{
         $this->validar_datos();
     }
     private function validar_datos(){
-        if( empty($this->datos['correo']) ){
+        if( empty($this->datos['nombre']) ){
             $this->respuesta['msg'] = 'por favor ingrese el nombre';
         }
         if( empty($this->datos['correo']) ){
@@ -46,8 +46,8 @@ class login{
             } 
         }
     }
-    public function validarUsuario($correo='', $contraseña=''){
-        $this->db->consultas('select * from login where correo like "%'.$correo.'%" and contraseña like "%'.$contraseña.'%"');
+    public function validarUsuario($valor=''){
+        $this->db->consultas('select * from login where correo like "%'.$valor.'%"');
         return $this->respuesta = $this->db->obtener_datos();
     }
 }
