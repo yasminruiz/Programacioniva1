@@ -57,21 +57,22 @@ class alumno{
             }
         }
     }
-    public function buscarAlumno($valor=''){
+    public function buscarAlumno($valor = ''){
         $this->db->consultas('
             select alumnos.idAlumno, alumnos.codigo, alumnos.nombre, alumnos.direccion, alumnos.telefono
             from alumnos
-            where alumnos.codigo like "%'.$valor.'%" or alumnos.nombre like "%'.$valor.'%"
+            where alumnos.codigo like "%'. $valor .'%" or alumnos.nombre like "%'. $valor .'%"
+
         ');
-        return $this->respuesta = $this->db->obtener_datos();
+        return $this->respuesta = $this->db->obtener_data();
     }
-    public function eliminarAlumno($idAlumno=''){
+    public function eliminarAlumno($idAlumno = 0){
         $this->db->consultas('
-            delete alumnos
-            from alumnos
-            where alumnos.idAlumno = "'.$idAlumno.'"
+            DELETE alumnos
+            FROM alumnos
+            WHERE alumnos.idAlumno="'.$idAlumno.'"
         ');
-        $this->respuesta['msg'] = 'Registro eliminado correctamente';
+        return $this->respuesta['msg'] = 'Registro eliminado correctamente';;
     }
 }
 ?>

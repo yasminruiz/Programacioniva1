@@ -12,7 +12,7 @@ print_r(json_encode($materia->respuesta));
 class materia{
     private $datos = array(), $db;
     public $respuesta = ['msg'=>'correcto'];
-
+    
     public function __construct($db){
         $this->db=$db;
     }
@@ -22,10 +22,10 @@ class materia{
     }
     private function validar_datos(){
         if( empty($this->datos['codigo']) ){
-            $this->respuesta['msg'] = 'por favor ingrese el codigo de la materia';
+            $this->respuesta['msg'] = 'por favor ingrese el codigo del materia';
         }
         if( empty($this->datos['nombre']) ){
-            $this->respuesta['msg'] = 'por favor ingrese el nombre de la materia';
+            $this->respuesta['msg'] = 'por favor ingrese el nombre del materia';
         }
         $this->almacenar_materia();
     }
@@ -35,36 +35,37 @@ class materia{
                 $this->db->consultas('
                     INSERT INTO materias (codigo,nombre) VALUES(
                         "'. $this->datos['codigo'] .'",
-                        "'. $this->datos['nombre'] .'"
+                        "'. $this->datos['nombre'] .'" 
                     )
                 ');
                 $this->respuesta['msg'] = 'Registro insertado correctamente';
             } else if( $this->datos['accion']==='modificar' ){
                 $this->db->consultas('
-                   UPDATE materias SET
-                        codigo     = "'. $this->datos['codigo'] .'",
-                        nombre     = "'. $this->datos['nombre'] .'"
+                    UPDATE materias SET
+                        codigo      = "'. $this->datos['codigo'] .'",
+                        nombre      = "'. $this->datos['nombre'] .'"
                     WHERE idMateria = "'. $this->datos['idMateria'] .'"
                 ');
                 $this->respuesta['msg'] = 'Registro actualizado correctamente';
             }
         }
     }
-    public function buscarMateria($valor=''){
+    public function buscarMateria($valor = ''){
         $this->db->consultas('
             select materias.idMateria, materias.codigo, materias.nombre
             from materias
-            where materias.codigo like "%'.$valor.'%" or materias.nombre like "%'.$valor.'%"
+            where materias.codigo like "%'. $valor .'%" or materias.nombre like "%'. $valor .'%"
+
         ');
-        return $this->respuesta = $this->db->obtener_datos();
+        return $this->respuesta = $this->db->obtener_data();
     }
-    public function eliminarMateria($idMateria=''){
+    public function eliminarMateria($idMateria = 0){
         $this->db->consultas('
-            delete materias
-            from materias
-            where materias.idMateria = "'.$idMateria.'"
+            DELETE materias
+            FROM materias
+            WHERE materias.idMateria="'.$idMateria.'"
         ');
-        $this->respuesta['msg'] = 'Registro eliminado correctamente';
+        return $this->respuesta['msg'] = 'Registro eliminado correctamente';;
     }
 }
 ?>

@@ -1,4 +1,4 @@
-var appmateria = new Vue({
+var appmaterias = new Vue({
     el:'#frm-materias',
     data:{
         materia:{
@@ -10,15 +10,17 @@ var appmateria = new Vue({
         }
     },
     methods:{
-        guardarMateria:function(){
+        guardarMaterias(){
             fetch(`private/Modulos/materias/procesos.php?proceso=recibirDatos&materia=${JSON.stringify(this.materia)}`).then( resp=>resp.json() ).then(resp=>{
                 this.materia.msg = resp.msg;
-                this.materia.idMateria = 0;
-                this.materia.codigo = '';
-                this.materia.nombre = '';
-                this.materia.accion = 'nuevo';
-                appBuscarDocente.buscarMateria();
             });
+        },
+        limpiarMaterias(){
+            this.materia.idMateria=0;
+            this.materia.accion="nuevo";
+            this.materia.codigo="";
+            this.materia.nombre="";
+            this.materia.msg="";
         }
     }
-  });
+});

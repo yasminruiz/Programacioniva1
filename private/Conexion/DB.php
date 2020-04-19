@@ -1,19 +1,22 @@
 <?php
+class DB{
+    private $conexion, $result;
 
-class Conexion{
-    private $conexion='', $result='';
-
-    public function Conexion($server, $user, $pass, $db){
-        $this->conexion = mysqli_connect($server,$user,$pass,$db) or die('NO pude conectarme al servidor de BD');
+    public function DB($server,$user, $pass,$db){
+        $this->conexion = mysqli_connect($server,$user,$pass,$db) or die('No se pudo conectar al Server de BD');
     }
-    public function consultas($sql=''){
-        $this->result = mysqli_query($this->conexion,$sql) or die(mysqli_error($this->conexion));
+    public function consultas($sql){
+        $this->result = mysqli_query($this->conexion, $sql) or die(mysqli_error($this->conexion));
     }
-    public function obtener_datos(){
+    public function obtener_data(){
         return $this->result->fetch_all(MYSQLI_ASSOC);
     }
-    public function respuesta(){
+    public function obtener_respuesta(){
         return $this->result;
     }
+    public function id(){
+        return $this->result->id();
+    }
 }
+
 ?>
