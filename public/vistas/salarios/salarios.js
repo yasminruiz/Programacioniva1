@@ -6,6 +6,7 @@ var appsalario = new Vue({
           isss      : '',
           afp       : '',
           d2        : '',
+          isr       : '',
           msg       : ''
       }
   },
@@ -19,17 +20,30 @@ var appsalario = new Vue({
         ISSS = 30
       }
 
-      if(dato<=10000){
-        AFP = (dato * 0.07).toFixed(2);
-      } else if(dato>10000){
-        AFP = 30
+      if(dato<=3500){
+        AFP = (dato * 0.0725).toFixed(2);
+      } else if(dato>3500){
+        AFP = 253.75;
       }
 
       D2 = dato - ISSS - AFP;
+      if(D2>=0.01 && D2<=472){
+        ISR = 0;
+      } else if(D2>=472.01 && D2<=895.24){
+        ISR = 17.67 + (D2 - 472) * 0.1;
+      } else if(D2>=895.25 && D2<=2038.10){
+        ISR = 60 + (D2 - 895.24) * 0.2;
+      } else if(D2>=2038.11){
+        ISR = 288.57 + (D2 - 2038.10) * 0.3;
+      }
+
+      D3 = D2 - ISR.toFixed(2);
 
       this.salario.isss = "ISSS: $" + ISSS;
       this.salario.afp = "AFP: $" + AFP;
-      this.salario.d2 ="Salario menos ISSS y AFP: $"+ D2 ;
+      this.salario.d2 = "Renta Gravada: $"+ D2;
+      this.salario.isr = "ISR: $" + ISR.toFixed(2);
+      this.salario.msg = "Salario neto: $" + D3;
     }
   }
 });
