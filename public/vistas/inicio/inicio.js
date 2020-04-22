@@ -9,7 +9,7 @@ Vue.component('info-card', {
     </div>
     `
 })
-var appInicio =  new Vue({
+var appInicio = new Vue({
     el: '#listado',
     data: {
       items: [],
@@ -24,5 +24,5 @@ var appInicio =  new Vue({
     },
     created:function(){
         this.verInformacion();
-    }
+    }  
 })

@@ -1,12 +1,15 @@
 <form id="frm-inicio" method="post"></form>
-    <div class="card w-50 bg-light">
+    <div class="card w-50 bg-light" id="listado" v-on:submit.prevent="verInformacion">
         <nav class="card-header">
             <button type="button" id="btn-close-inicio" class="close" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
-            <input type="text" v-model="valor" v-on:keyup="verInformacion" placeholder="Buscar" class="form-control">
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control" type="text" placeholder="Buscar" v-model="valor">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+            </form>
         </nav>
-        <div class="card-body" id="listado">
+        <div class="card-body">
             <info-card v-for="item in items" 
             :key="item.idInformacion" :titulo="item.titulo" 
             :contenido="item.contenido" ></info-card>
