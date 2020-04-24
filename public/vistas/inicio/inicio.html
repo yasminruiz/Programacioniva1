@@ -1,19 +1,17 @@
 <form id="frm-inicio" method="post"></form>
-    <div class="card w-50 bg-light" id="listado" v-on:submit.prevent="verInformacion">
-        <nav class="card-header">
-            <button type="button" id="btn-close-inicio" class="close" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control" type="text" placeholder="Buscar" v-model="valor">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-            </form>
-        </nav>
-        <div class="card-body">
-            <info-card v-for="item in items" 
-            :key="item.idInformacion" :titulo="item.titulo" 
-            :contenido="item.contenido" ></info-card>
-        </div>     
+<div class="card w-50 bg-light" id="listado">
+    <nav class="card-header">
+        <button type="button" id="btn-close-inicio" class="close" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control" type="text" placeholder="Buscar" v-model="valor" v-on:keyup="verInformacion">
+        </form>
+    </nav>
+    <div class="card-body" id="cont">
+        <info-card v-for="item in items" :llave="item.idInformacion" :titulo="item.titulo" :contenido="item.contenido">
+        </info-card>
     </div>
-   <script src="public/vistas/inicio/inicio.js"></script>
+</div>
+<script src="public/vistas/inicio/inicio.js"></script>
 </form>

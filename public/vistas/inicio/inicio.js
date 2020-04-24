@@ -1,5 +1,5 @@
 Vue.component('info-card', {
-    props: ['titulo','contenido','key'],
+    props: ['titulo', 'contenido', 'llave'],
     template: `
     <div class="card mb-3">
     <div class="card-body">
@@ -12,17 +12,17 @@ Vue.component('info-card', {
 var appInicio = new Vue({
     el: '#listado',
     data: {
-      items: [],
-      valor:''
+        items: [],
+        valor: ''
     },
-    methods:{
-        verInformacion:function(){
-            fetch(`private/Modulos/informacion/procesos.php?proceso=buscarInformacion&informacion=${this.valor}`).then(resp=>resp.json()).then(resp=>{
+    methods: {
+        verInformacion:function () {
+            fetch(`private/Modulos/informacion/procesos.php?proceso=buscarInformacion&informacion=${this.valor}`).then(resp => resp.json()).then(resp => {
                 this.items = resp;
             });
-        },
+        }
     },
-    created:function(){
+    created: function () {
         this.verInformacion();
-    }  
+    }
 })

@@ -46,5 +46,13 @@ class informacion{
         $this->db->consultas('select * from informacion where titulo like "%'.$valor.'%" or contenido like "%'.$valor.'%"');
         return $this->respuesta = $this->db->obtener_datos();
     }
+    public function eliminarInformacion($idInformacion=''){
+        $this->db->consultas('
+            delete informacion
+            from informacion
+            where informacion.idInformacion = "'.$idInformacion.'"
+        ');
+        $this->respuesta['msg'] = 'Registro eliminado correctamente';
+    }
 }
 ?>

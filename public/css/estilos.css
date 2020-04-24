@@ -1,3 +1,21 @@
 .modulos{
     position: absolute;
 }
+
+#listado {
+	height: 500px;
+	width: 200px;
+	border: 1px solid #ddd;
+	background: #f1f1f1;
+	overflow-y: scroll;
+}
+#base {
+	height: 500px;
+	width: 200px;
+	border: 1px solid #ddd;
+	background: #f1f1f1;
+	overflow-y: scroll;
+}
+#cont {
+	height: auto;
+}
