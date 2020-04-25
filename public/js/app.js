@@ -12,6 +12,3 @@ function init(){
     });
 }
 init();
-var appPrincipal = new vue({
-    el: '#principal'
-})
