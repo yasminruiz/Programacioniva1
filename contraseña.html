@@ -13,10 +13,10 @@
 </head>
 
 <body class="row m-0 bg-primary justify-content-center aling-items-center vh-100">
-    <form v-on:submit.prevent="iniciarSesion" v-on:reset="Registrarse" id="frm-login" method="post">
+    <form v-on:submit.prevent="RecuperarContra" v-on:reset="Volver" id="frm-recuperar" method="post">
         <div class="card mb-3 text-center">
             <div class="card-header">
-                Iniciar Sesión
+                Restablecer Contraseña
             </div>
             <div class="card-body">
                 <div class="row p-2">
@@ -24,35 +24,30 @@
                         Correo
                     </div>
                     <div class="col-12">
-                        <input type="email" required="true" v-model="login.correo" placeholder="Correo"
+                        <input type="email" required="true" v-model="restablecer.correo" placeholder="Correo"
                             class="form-control">
                     </div>
                 </div>
                 <div class="row p-2">
                     <div class="col-4">
-                        Contraseña
+                        Nueva Contraseña
                     </div>
                     <div class="col-12">
-                        <input type="password" required="true" v-model="login.contraseña" placeholder="contraseña"
+                        <input type="text" required="true" v-model="restablecer.contraseña" placeholder="contraseña"
                             class="form-control">
                     </div>
                 </div>
                 <div class="row p-2">
                     <div class="col-12 text-center">
-                        <input type="submit" class="btn btn-primary" value="Iniciar Sesión">
-                        <input type="reset" class="btn btn-success" value="Registrarse">
+                        <input type="submit" class="btn btn-primary" value="Restablecer">
+                        <input type="reset" class="btn btn-success" value="Regresar">
                         
                     </div>
                 </div>
                 <div class="row p-2">
                     <div class="col-12 text-center">
-                        <input type="button" class="btn btn-warning" value="Restablecer Contraseña" v-on:click="Recuperar">
-                    </div>
-                </div>
-                <div class="row p-2">
-                    <div class="col-12 text-center">
                         <div class="alert alert-success" role="alert">
-                            {{ login.msg }}
+                            {{ restablecer.msg }}
                         </div>
                     </div>
                 </div>
@@ -64,6 +59,6 @@
 <script src="public/js/jquery-ui.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-<script src="public/vistas/login/login.js"></script>
+<script src="public/vistas/login/contraseña.js"></script>
 
 </html>

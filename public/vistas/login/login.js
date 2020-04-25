@@ -20,6 +20,9 @@ var applogin = new Vue({
     },
     Registrarse: function () {
       location.href = "registrar.html";
+    },
+    Recuperar: function () {
+      location.href = "contraseña.html";
     }
   }
 });
