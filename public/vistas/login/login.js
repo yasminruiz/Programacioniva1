@@ -6,14 +6,20 @@ var applogin = new Vue({
       correo: '',
       contraseña: '',
       msg: ''
-    },
-    usuarios: []
+    }
   },
   methods: {
     iniciarSesion: function () {
       fetch(`private/Modulos/login/procesos.php?proceso=recibirUsuario&login=${JSON.stringify(this.login)}`).then(resp => resp.json()).then(resp => {
-        this.login.msg = resp.msg;
+        if (resp.msg === "Bienvenido") {
+          location.href = "principal.html";
+        } else {
+          this.login.msg = resp.msg;
+        }
       });
+    },
+    Registrarse: function () {
+      location.href = "registrar.html";
     }
   }
 });

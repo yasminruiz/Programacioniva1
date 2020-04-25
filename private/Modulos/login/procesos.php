@@ -68,13 +68,12 @@ class login
             $contraseña = $this->datos['contraseña'];
 
             $this->db->consultas('select * from login where correo="' . $correo . '" and contraseña="' . $contraseña . '" limit 1');
-            $this->respuesta['msg'] = $this->db->obtener_datos();
-            $usuario = $this->respuesta['msg'];
-
-            if (empty($this->respuesta['msg'])) {
+            $this->respuesta = $this->db->obtener_datos();
+            if (empty($this->respuesta)) {
                 $this->respuesta['msg'] = 'correo o contraseña incorrecto ';
             } else {
-                return $this->respuesta['msg'] = 'Bienvenido';
+                $_SESSION['correo'] = $correo;
+                $this->respuesta['msg'] = 'Bienvenido';
             }
         }
     }

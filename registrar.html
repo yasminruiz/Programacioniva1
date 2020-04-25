@@ -8,24 +8,32 @@
     <link rel="stylesheet" href="public/css/estilos.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
     <link rel="shortcut icon" href="img/logo.png">
     <title> Educacion Financiera</title>
 </head>
 
 <body class="row m-0 bg-primary justify-content-center aling-items-center vh-100">
-    <form v-on:submit.prevent="iniciarSesion" v-on:reset="Registrarse" id="frm-login" method="post">
-        <div class="card mb-3 text-center">
+    <form v-on:submit.prevent="guardarRegistro" v-on:reset="Iniciarsesion" method="POST" id="frm-registrar">
+        <div class="card bg-light mb-3" style="max-width: 48rem;">
             <div class="card-header">
-                Iniciar Sesión
+                Registrarse
             </div>
             <div class="card-body">
+                <div class="row p-2">
+                    <div class="col-4">
+                        Nombre
+                    </div>
+                    <div class="col-12">
+                        <input type="text" v-model="registrar.nombre" placeholder="Nombre" class="form-control">
+                    </div>
+                </div>
                 <div class="row p-2">
                     <div class="col-4">
                         Correo
                     </div>
                     <div class="col-12">
-                        <input type="email" required="true" v-model="login.correo" placeholder="Correo"
-                            class="form-control">
+                        <input type="email" v-model="registrar.correo" placeholder="Correo" class="form-control">
                     </div>
                 </div>
                 <div class="row p-2">
@@ -33,21 +41,19 @@
                         Contraseña
                     </div>
                     <div class="col-12">
-                        <input type="password" required="true" v-model="login.contraseña" placeholder="contraseña"
-                            class="form-control">
+                        <input type="text" v-model="registrar.contraseña" placeholder="contraseña" class="form-control">
                     </div>
                 </div>
                 <div class="row p-2">
                     <div class="col-12 text-center">
-                        <input type="submit" class="btn btn-primary" value="Iniciar Sesión">
-                        <input type="reset" class="btn btn-success mostrar-registrar" value="Registrarse">
-                        
+                        <input id="btnGuardarRegistro" type="submit" class="btn btn-primary" value="Registrar">
+                        <input type="reset" class="btn btn-success mostrar-registrar" value="Iniciar Sesion">
                     </div>
                 </div>
                 <div class="row p-2">
                     <div class="col-12 text-center">
                         <div class="alert alert-success" role="alert">
-                            {{ login.msg }}
+                            {{ registrar.msg }}
                         </div>
                     </div>
                 </div>
@@ -59,6 +65,6 @@
 <script src="public/js/jquery-ui.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-<script src="public/vistas/login/login.js"></script>
+<script src="public/vistas/login/registrar.js"></script>
 
 </html>
