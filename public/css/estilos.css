@@ -1,21 +1,19 @@
-.modulos{
-    position: absolute;
+.modulos {
+	position: absolute;
 }
 
 #listado {
-	height: 500px;
-	width: 200px;
-	border: 1px solid #ddd;
-	background: #f1f1f1;
-	overflow-y: scroll;
+	height: 100%;
+	width: 100%;
+	background: #ffffff;
 }
+
 #base {
-	height: 500px;
-	width: 200px;
-	border: 1px solid #ddd;
-	background: #f1f1f1;
-	overflow-y: scroll;
+	height: 350px;
+	width: 100%;
+	background: #ffffff;
 }
-#cont {
-	height: auto;
+
+body {
+	background: #ffffff;
 }

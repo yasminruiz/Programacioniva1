@@ -1,4 +1,6 @@
 <?php 
+session_start();
+
 include('../../Config/Config.php');
 $consulta = new consulta($conexion);
 
@@ -21,9 +23,6 @@ class consulta{
         $this->validar_datos();
     }
     private function validar_datos(){
-        if( empty($this->datos['nombre']) ){
-            $this->respuesta['msg'] = 'por favor ingrese su nombre';
-        }
         if( empty($this->datos['consulta']) ){
             $this->respuesta['msg'] = 'por favor ingrese la consulta';
         }
@@ -34,8 +33,8 @@ class consulta{
             if( $this->datos['accion']==='nuevo' ){
                 $this->db->consultas('
                     INSERT INTO consultas (nombre,consulta) VALUES(
-                        "'. $this->datos['nombre'] .'",
-                        "'. $this->datos['consulta'] .'"
+                        "'. $_SESSION['correo'] .'",
+                        "'. $this->datos['consultas'] .'"
                     )
                 ');
                 $this->respuesta['msg'] = 'Registro insertado correctamente';
