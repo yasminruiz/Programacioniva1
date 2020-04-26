@@ -78,17 +78,6 @@ class login
         }
     }
 
-    public function verificar_Usua()
-    {
-        $user_check = $_SESSION['correo'];
-        if (empty($user_check)) {
-            $this->respuesta['msg'] = 'registrese';
-        } else {
-            $this->db->consultas('select * from login where correo="' . $user_check . '" limit 1');
-            $this->respuesta = $this->db->obtener_datos();
-        }
-    }
-
     public function recibirCorreo($correo)
     {
         $this->datos = json_decode($correo, true);
