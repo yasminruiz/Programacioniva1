@@ -1,26 +1,26 @@
-var appbuscar_alumnos = new Vue({
-    el: '#frm-buscar-alumnos',
-    data:{
-        mis_alumnos:[],
-        valor:''
+var appbuscar_clientes = new Vue({
+    el: '#frm-buscar-clientes',
+    data: {
+        mis_clientes: [],
+        valor: ''
     },
-    methods:{
-        buscarAlumnos(){
-            fetch(`private/Modulos/alumnos/procesos.php?proceso=buscarAlumno&alumno=${this.valor}`).then( resp=>resp.json() ).then(resp=>{ 
+    methods: {
+        buscarCliente() {
+            fetch(`private/Modulos/clientes/procesos.php?proceso=buscarCliente&cliente=${this.valor}`).then(resp => resp.json()).then(resp => {
                 this.mis_alumnos = resp;
             });
         },
-        modificarAlumno(alumno){
-            appalumnos.alumno = alumno;
-            appalumnos.alumno.accion = 'modificar';
+        modificarCliente(cliente) {
+            appclientes.cliente = cliente;
+            appclientes.clientes.accion = 'modificar';
         },
-        eliminarAlumno(idAlumno){
-            fetch(`private/Modulos/alumnos/procesos.php?proceso=eliminarAlumno&alumno=${idAlumno}`).then( resp=>resp.json() ).then(resp=>{
+        eliminarCliente(idCliente) {
+            fetch(`private/Modulos/clientes/procesos.php?proceso=eliminarCliente&cliente=${idCliente}`).then(resp => resp.json()).then(resp => {
                 this.buscarAlumnos();
             });
         }
     },
-    created(){
-        this.buscarAlumnos();
+    created() {
+        this.buscarCliente();
     }
 });
