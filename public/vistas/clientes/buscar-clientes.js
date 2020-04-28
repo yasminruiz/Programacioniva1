@@ -7,16 +7,16 @@ var appbuscar_clientes = new Vue({
     methods: {
         buscarCliente() {
             fetch(`private/Modulos/clientes/procesos.php?proceso=buscarCliente&cliente=${this.valor}`).then(resp => resp.json()).then(resp => {
-                this.mis_alumnos = resp;
+                this.mis_clientes = resp;
             });
         },
         modificarCliente(cliente) {
             appclientes.cliente = cliente;
-            appclientes.clientes.accion = 'modificar';
+            appclientes.cliente.accion = 'modificar';
         },
         eliminarCliente(idCliente) {
             fetch(`private/Modulos/clientes/procesos.php?proceso=eliminarCliente&cliente=${idCliente}`).then(resp => resp.json()).then(resp => {
-                this.buscarAlumnos();
+                this.buscarCliente();
             });
         }
     },
