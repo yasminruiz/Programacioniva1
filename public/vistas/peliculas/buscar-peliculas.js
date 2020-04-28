@@ -1,26 +1,26 @@
-var appbuscar_docentes = new Vue({
-    el: '#frm-buscar-docentes',
-    data:{
-        mis_docentes:[],
-        valor:''
+var appbuscar_peliculas = new Vue({
+    el: '#frm-buscar-peliculas',
+    data: {
+        mis_peliculas: [],
+        valor: ''
     },
-    methods:{
-        buscarDocentes(){
-            fetch(`private/Modulos/docentes/procesos.php?proceso=buscarDocente&docente=${this.valor}`).then( resp=>resp.json() ).then(resp=>{ 
-                this.mis_docentes = resp;
+    methods: {
+        buscarPeliculas() {
+            fetch(`private/Modulos/peliculas/procesos.php?proceso=buscarpeliculas&pelicula=${this.valor}`).then(resp => resp.json()).then(resp => {
+                this.mis_peliculas = resp;
             });
         },
-        modificarDocente(docente){
-            appdocentes.docente = docente;
-            appdocentes.docente.accion = 'modificar';
+        modificarPelicula(pelicula) {
+            appPeliculas.pelicula = pelicula;
+            appPeliculas.pelicula.accion = 'modificar';
         },
-        eliminarDocente(idDocente){
-            fetch(`private/Modulos/docentes/procesos.php?proceso=eliminarDocente&docente=${idDocente}`).then( resp=>resp.json() ).then(resp=>{
-                this.buscarDocentes();
+        eliminarPelicula(idPelicula) {
+            fetch(`private/Modulos/peliculas/procesos.php?proceso=eliminarPelicula&pelicula=${idPelicula}`).then(resp => resp.json()).then(resp => {
+                this.buscarPeliculas();
             });
         }
     },
-    created(){
-        this.buscarDocentes();
+    created() {
+        this.buscarPeliculas();
     }
 });

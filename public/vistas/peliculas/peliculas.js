@@ -1,35 +1,30 @@
-var appdocentes = new Vue({
-    el:'#frm-docentes',
-    data:{
-        docente:{
-            idDocente : 0,
-            accion    : 'nuevo',
-            codigo    : '',
-            nombre    : '',
-            direccion : '',
-            telefono  : '',
-            dui       : '',
-            nit       : '',
-            msg       : ''
+var appPeliculas = new Vue({
+    el: '#frm-peliculas',
+    data: {
+        pelicula: {
+            idPelicula: 0,
+            accion: 'nuevo',
+            descripcion: '',
+            sinopsis: '',
+            genero: '',
+            duracion: '',
+            msg: ''
         }
     },
-    methods:{
-        guardarDocentes(){
-            fetch(`private/Modulos/docentes/procesos.php?proceso=recibirDatos&docente=${JSON.stringify(this.docente)}`).then( resp=>resp.json() ).then(resp=>{
-                this.docente.msg = resp.msg;
-                this.limpiarDocentes();
+    methods: {
+        guardarPeliculas() {
+            fetch(`private/Modulos/peliculas/procesos.php?proceso=recibirDatos&pelicula=${JSON.stringify(this.pelicula)}`).then(resp => resp.json()).then(resp => {
+                this.pelicula.msg = resp.msg;
             });
         },
-        limpiarDocentes(){
-            this.docente.idDocente=0;
-            this.docente.accion="nuevo";
-            this.docente.codigo="";
-            this.docente.nombre="";
-            this.docente.direccion="";
-            this.docente.telefono="";
-            this.docente.dui="";
-            this.docente.nit="";
-            this.docente.msg="";
+        limpiarPeliculas() {
+            this.pelicula.idPelicula = 0;
+            this.pelicula.accion = "nuevo";
+            this.pelicula.descripcion = "";
+            this.pelicula.sinopsis = "";
+            this.pelicula.genero = "";
+            this.pelicula.duracion = "";
+            this.pelicula.msg = "";
         }
     }
 });

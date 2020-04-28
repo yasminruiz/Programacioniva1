@@ -1,9 +1,9 @@
-<form method="post" id="frm-buscar-docentes">
+<form method="post" id="frm-buscar-peliculas">
     <div class="card text-white bg-dark mb-3" style="max-width: 48rem;">
         <div class="card-header">
-            BUSQUEDA DE DOCENTES
+            BUSQUEDA DE PELICULAS
 
-            <button type="button" id="btn-close-buscar-docentes" class="close" aria-label="Close">
+            <button type="button" id="btn-close-buscar-peliculas" class="close" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
@@ -12,29 +12,28 @@
                 <thead>
                     <tr>
                         <th colspan="7">
-                            <input type="text" v-model="valor" v-on:keyup="buscarDocentes" placeholder="codigo, nombre, dui o nit" class="form-control">
+                            <input type="text" v-model="valor" v-on:keyup="buscarPeliculas"
+                                placeholder="descripcion, sinopsis o genero" class="form-control">
                         </th>
                     </tr>
                     <tr>
-                        <th>CODIGO</th>
-                        <th>NOMBRE</th>
-                        <th>DIRECCION</th>
-                        <th>TELEFONO</th>
-                        <th>DUI</th>
-                        <th>NIT</th> 
+                        <th>DESCRIPCION</th>
+                        <th>SINOPSIS</th>
+                        <th>GENERO</th>
+                        <th>DURACION</th>
                         <th> </th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="mi_docente in mis_docentes" :key="mi_docente.idDocente" v-on:click="modificarDocente(mi_docente)" >
-                        <td>{{ mi_docente.codigo }}</td>
-                        <td>{{ mi_docente.nombre }}</td>
-                        <td>{{ mi_docente.direccion }}</td>
-                        <td>{{ mi_docente.telefono }}</td>
-                        <td>{{ mi_docente.dui }}</td>
-                        <td>{{ mi_docente.nit }}</td>
+                    <tr v-for="mi_pelicula in mis_peliculas" :key="mi_pelicula.idPelicula"
+                        v-on:click="modificarPelicula(mi_pelicula)">
+                        <td>{{ mi_pelicula.descripcion }}</td>
+                        <td>{{ mi_pelicula.sinopsis }}</td>
+                        <td>{{ mi_pelicula.genero }}</td>
+                        <td>{{ mi_pelicula.duracion }}</td>
                         <td>
-                            <input v-on:click="eliminarDocente(mi_docente.idDocente)" type="button" class="btn btn-outline-danger text-white" value="del">
+                            <input v-on:click="eliminarPelicula(mi_pelicula.idPelicula)" type="button"
+                                class="btn btn-outline-danger text-white" value="del">
                         </td>
                     </tr>
                 </tbody>
@@ -42,4 +41,4 @@
         </div>
     </div>
 </form>
-<script src="public/vistas/docentes/buscar-docentes.js"></script>
+<script src="public/vistas/peliculas/buscar-peliculas.js"></script>

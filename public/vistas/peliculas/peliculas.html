@@ -1,9 +1,9 @@
-<form method="post" id="frm-docentes" v-on:submit.prevent="guardarDocentes" v-on:reset.prevent="limpiarDocentes">
+<form method="post" id="frm-peliculas" v-on:submit.prevent="guardarPeliculas" v-on:reset.prevent="limpiarPeliculas">
     <div class="card text-white bg-dark mb-3" style="max-width: 36rem;">
         <div class="card-header">
-            MANTENIMIENTO DE DOCENTES
+            MANTENIMIENTO DE PELICULAS
 
-            <button type="button" id="btn-close-docentes" class="close" aria-label="Close">
+            <button type="button" id="btn-close-peliculas" class="close" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
@@ -11,78 +11,62 @@
             <div class="row row-cols-1 p-2">
                 <div class="row-col">
                     <div class="col">
-                        CODIGO:
+                        DESCRIPCION:
                     </div>
                     <div class="col">
-                        <input type="text" required v-model="docente.codigo" placeholder="000" class="form-control">
-                    </div>
-                </div>
-            </div>
-            <div class="row row-cols-1 p-2">
-                <div class="row-col">
-                    <div class="col">
-                        NOMBRE:
-                    </div>
-                    <div class="col">
-                        <input type="text" required v-model="docente.nombre" placeholder="AAA AAAA" class="form-control">
+                        <input type="text" required v-model="pelicula.descripcion" placeholder="Aaaaa..."
+                            class="form-control">
                     </div>
                 </div>
             </div>
             <div class="row row-cols-1 p-2">
                 <div class="row-col">
                     <div class="col">
-                        DIRECCION:
+                        SINOPSIS:
                     </div>
                     <div class="col">
-                        <input type="text" required v-model="docente.direccion" placeholder="XXXX000000" class="form-control">
-                    </div>
-                </div>
-            </div>
-            <div class="row row-cols-1">
-                <div class="row-col">
-                    <div class="col">
-                        TELEFONO:
-                    </div>
-                    <div class="col">
-                        <input type="text" required v-model="docente.telefono" placeholder="0000-0000" class="form-control">
+                        <input type="text" required v-model="pelicula.sinopsis" placeholder="AAAAAAAA"
+                            class="form-control">
                     </div>
                 </div>
             </div>
-            <div class="row row-cols-1">
+            <div class="row row-cols-1 p-2">
                 <div class="row-col">
                     <div class="col">
-                        DUI:
+                        GENERO:
                     </div>
                     <div class="col">
-                        <input type="text" required v-model="docente.dui" placeholder="00000000-0" class="form-control">
+                        <input type="text" required v-model="pelicula.genero" placeholder="AAA" class="form-control">
                     </div>
                 </div>
             </div>
-            <div class="row row-cols-1">
+            <div class="row row-cols-1 p-2">
                 <div class="row-col">
                     <div class="col">
-                        NIT:
+                        DURACION:
                     </div>
                     <div class="col">
-                        <input type="text" required v-model="docente.nit" placeholder="0000-000000-000-0" class="form-control">
+                        <input type="text" required v-model="pelicula.duracion" placeholder="00:00"
+                            class="form-control">
                     </div>
                 </div>
             </div>
             <div class="row row-cols-1 p-2">
                 <div class="row-col text-center">
                     <div class="col">
-                        <input id="btnGuardarDocentes" type="submit" class="btn btn-outline-primary text-white" value="Guardar">
+                        <input type="submit" class="btn btn-outline-primary text-white" value="Guardar">
                         <input type="reset" class="btn btn-outline-warning text-white" value="Limpiar">
-                        <input type="button" class="btn btn-outline-success mostrar-buscar-docentes text-white" data-modulo="docentes" data-form="buscar-docentes" value="Buscar" >
+                        <input type="button" class="btn btn-outline-success mostrar-buscar-peliculas text-white"
+                            data-modulo="peliculas" data-form="buscar-peliculas" value="Buscar">
                     </div>
                 </div>
             </div>
             <div class="row row-cols-1 p-2">
                 <div class="row-col text-center">
-                    <div class="col">{{ docente.msg }}</div>
+                    <div class="col">{{ pelicula.msg }}</div>
                 </div>
             </div>
         </div>
     </div>
 </form>
-<script src="public/vistas/docentes/docentes.js"></script>
+<script src="public/vistas/peliculas/peliculas.js"></script>
