@@ -21,10 +21,10 @@ class matricula{
         $this->validar_datos();
     }
     private function validar_datos(){
-        if( empty($this->datos['periodo']['id']) ){
-            $this->respuesta['msg'] = 'por favor ingrese el periodo del matricula';
+        if( empty($this->datos['periodo']['idPeriodo']) ){
+            $this->respuesta['msg'] = 'por favor ingrese el periodo de la matricula';
         }
-        if( empty($this->datos['alumno']['id']) ){
+        if( empty($this->datos['alumno']['idAlumno']) ){
             $this->respuesta['msg'] = 'por favor ingrese el alumno';
         }
         $this->almacenar_matricula();
@@ -34,8 +34,8 @@ class matricula{
             if( $this->datos['accion']==='nuevo' ){
                 $this->db->consultas('
                     INSERT INTO matriculas (idPeriodo,idAlumno,fecha) VALUES(
-                        "'. $this->datos['periodo']['id'] .'",
-                        "'. $this->datos['alumno']['id'] .'",
+                        "'. $this->datos['periodo']['idPeriodo'] .'",
+                        "'. $this->datos['alumno']['idAlumno'] .'",
                         "'. $this->datos['fecha'] .'"
                     )
                 ');
@@ -74,11 +74,11 @@ class matricula{
             $datos[] = [
                 'idMatricula' => $value['idMatricula'],
                 'alumno'      => [
-                    'id'      => $value['idAlumno'],
+                    'idAlumno'      => $value['idAlumno'],
                     'label'   => $value['nombre']
                 ],
                 'periodo'      => [
-                    'id'      => $value['idPeriodo'],
+                    'idPeriodo'=> $value['idPeriodo'],
                     'label'   => $value['periodo']
                 ],
                 'fecha'       => $value['f'],
