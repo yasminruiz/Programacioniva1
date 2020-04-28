@@ -1,113 +1,125 @@
-<?php 
+<?php
 include('../../Config/Config.php');
-$matricula = new matricula($conexion);
+$alquiler = new alquiler($conexion);
 
 $proceso = '';
-if( isset($_GET['proceso']) && strlen($_GET['proceso'])>0 ){
-	$proceso = $_GET['proceso'];
+if (isset($_GET['proceso']) && strlen($_GET['proceso']) > 0) {
+    $proceso = $_GET['proceso'];
 }
-$matricula->$proceso( $_GET['matricula'] );
-print_r(json_encode($matricula->respuesta));
+$alquiler->$proceso($_GET['alquiler']);
+print_r(json_encode($alquiler->respuesta));
 
-class matricula{
+class alquiler
+{
     private $datos = array(), $db;
-    public $respuesta = ['msg'=>'correcto'];
-    
-    public function __construct($db){
-        $this->db=$db;
+    public $respuesta = ['msg' => 'correcto'];
+
+    public function __construct($db)
+    {
+        $this->db = $db;
     }
-    public function recibirDatos($matricula){
-        $this->datos = json_decode($matricula, true);
+    public function recibirDatos($alquiler)
+    {
+        $this->datos = json_decode($alquiler, true);
         $this->validar_datos();
     }
-    private function validar_datos(){
-        if( empty($this->datos['periodo']['idPeriodo']) ){
-            $this->respuesta['msg'] = 'por favor ingrese el periodo de la matricula';
+    private function validar_datos()
+    {
+        if (empty($this->datos['clientes']['id'])) {
+            $this->respuesta['msg'] = 'por favor ingrese un nombre';
         }
-        if( empty($this->datos['alumno']['idAlumno']) ){
-            $this->respuesta['msg'] = 'por favor ingrese el alumno';
+        if (empty($this->datos['peliculas']['id'])) {
+            $this->respuesta['msg'] = 'por favor ingrese una pelicula';
         }
-        $this->almacenar_matricula();
+        $this->almacenar_alquiler();
     }
-    private function almacenar_matricula(){
-        if( $this->respuesta['msg']==='correcto' ){
-            if( $this->datos['accion']==='nuevo' ){
+    private function almacenar_alquiler()
+    {
+        if ($this->respuesta['msg'] === 'correcto') {
+            if ($this->datos['accion'] === 'nuevo') {
                 $this->db->consultas('
-                    INSERT INTO matriculas (idPeriodo,idAlumno,fecha) VALUES(
-                        "'. $this->datos['periodo']['idPeriodo'] .'",
-                        "'. $this->datos['alumno']['idAlumno'] .'",
-                        "'. $this->datos['fecha'] .'"
+                    INSERT INTO alquiler (idCliente,idPelicula,fechaPrestamo,fecgaDevolucion,valor) VALUES(
+                        "' . $this->datos['clientes']['id'] . '",
+                        "' . $this->datos['peliculas']['id'] . '",
+                        "' . $this->datos['fechaPrestamo'] . '",
+                        "' . $this->datos['fechaDevolucion'] . '",
+                        "' . $this->datos['valor'] . '"
                     )
                 ');
                 $this->respuesta['msg'] = 'Registro insertado correctamente';
-            } else if( $this->datos['accion']==='modificar' ){
+            } else if ($this->datos['accion'] === 'modificar') {
                 $this->db->consultas('
-                    UPDATE matriculas SET
-                        idPeriodo     = "'. $this->datos['periodo']['id'] .'",
-                        idAlumno      = "'. $this->datos['alumno']['id'] .'",
-                        fecha         = "'. $this->datos['fecha'] .'"
-                    WHERE idMatricula = "'. $this->datos['idMatricula'] .'"
+                    UPDATE alquiler SET
+                        idCliente        = "' . $this->datos['clientes']['id'] . '",
+                        idPelicula       = "' . $this->datos['peliculas']['id'] . '",
+                        fechaPrestamo    = "' . $this->datos['fechaPrestamo'] . '",
+                        fechaDevolucion  = "' . $this->datos['fechaDevolucion'] . '",
+                        valor            = "' . $this->datos['valor'] . '",
+                    WHERE idAlquiler    = "' . $this->datos['idAlquiler'] . '"
                 ');
                 $this->respuesta['msg'] = 'Registro actualizado correctamente';
             }
         }
     }
-    public function buscarMatricula($valor = ''){
-        if( substr_count($valor, '-')===2 ){
-            $valor = implode('-', array_reverse(explode('-',$valor)));
+    public function buscarAlquiler($valor = '')
+    {
+        if (substr_count($valor, '-') === 2) {
+            $valor = implode('-', array_reverse(explode('-', $valor)));
         }
         $this->db->consultas('
-            select matriculas.idMatricula, matriculas.idPeriodo, matriculas.idAlumno, 
-                date_format(matriculas.fecha,"%d-%m-%Y") AS fecha, matriculas.fecha AS f, 
-                alumnos.codigo, alumnos.nombre, 
-                periodos.periodo, periodos.activo
-            from matriculas
-                inner join alumnos on(alumnos.idAlumno=matriculas.idAlumno)
-                inner join periodos on(periodos.idPeriodo=matriculas.idPeriodo)
-            where alumnos.nombre like "%'. $valor .'%" or 
-                periodos.periodo like "%'. $valor .'%" or 
-                matriculas.fecha like "%'. $valor .'%"
+            select alquiler.idAlquiler, alquiler.idCliente, alquiler.idPelicula, 
+                alquiler.fechaPrestamo,alquiler.fechaDevolucion,clientes.nombre,
+                peliculas.descripcion, alquiler.valor
+            from alquiler
+                inner join clientes on(clientes.idCliente=alquiler.idCliente)
+                inner join peliculas on(peliculas.idPelicula=alquiler.idPelicula)
+            where clientes.nombre like "%' . $valor . '%" or 
+                peliculas.descripcion like "%' . $valor . '%" or 
+                alquiler.fechaPrestamo like "%' . $valor . '%" or
+                alquiler.fechaDevolucion like "%' . $valor . '%"
 
         ');
-        $matriculas = $this->respuesta = $this->db->obtener_data();
-        foreach ($matriculas as $key => $value) {
+        $alquiler = $this->respuesta = $this->db->obtener_data();
+        foreach ($alquiler as $key => $value) {
             $datos[] = [
-                'idMatricula' => $value['idMatricula'],
-                'alumno'      => [
-                    'idAlumno'      => $value['idAlumno'],
+                'idAlquiler' => $value['idAlquiler'],
+                'cliente'      => [
+                    'id'      => $value['idCliente'],
                     'label'   => $value['nombre']
                 ],
-                'periodo'      => [
-                    'idPeriodo'=> $value['idPeriodo'],
-                    'label'   => $value['periodo']
+                'pelicula'    => [
+                    'id'      => $value['idPelicula'],
+                    'label'   => $value['descripcion']
                 ],
-                'fecha'       => $value['f'],
-                'f'           => $value['fecha']
+                'fechaPrestamo'    => $value['fechaPrestamo'],
+                'fechaDevolucion'  => $value['fechaDevolucion'],
+                'valor'            => $value['valor']
 
-            ]; 
+            ];
         }
         return $this->respuesta = $datos;
     }
-    public function traer_periodos_alumnos(){
+    public function traer_peliculas_clientes()
+    {
         $this->db->consultas('
-            select periodos.periodo AS label, periodos.idPeriodo AS id
-            from periodos
+            select peliculas.descripcion AS label, peliculas.idPelicula AS id
+            from peliculas
         ');
-        $periodos = $this->db->obtener_data();
+        $peliculas = $this->db->obtener_data();
         $this->db->consultas('
-            select alumnos.nombre AS label, alumnos.idAlumno AS id
-            from alumnos
+            select clientes.nombre AS label, clientes.idCliente AS id
+            from clientes
         ');
-        $alumnos = $this->db->obtener_data();
-        return $this->respuesta = ['periodos'=>$periodos, 'alumnos'=>$alumnos ];
+        $clientes = $this->db->obtener_data();
+        return $this->respuesta = ['peliculas' => $peliculas, 'clientes' => $clientes];
     }
-    public function eliminarMatricula($idMatricula = 0){
+    public function eliminarAlquiler($idAlquiler = 0)
+    {
         $this->db->consultas('
-            DELETE matriculas
-            FROM matriculas
-            WHERE matriculas.idMatricula="'.$idMatricula.'"
+            DELETE alquiler
+            FROM alquiler
+            WHERE idAlquiler="' . $idAlquiler . '"
         ');
-        return $this->respuesta['msg'] = 'Registro eliminado correctamente';;
+        return $this->respuesta['msg'] = 'Registro eliminado correctamente';
     }
 }
-?>
